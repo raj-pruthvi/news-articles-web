@@ -10,13 +10,41 @@
     News Analysis
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+  
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+              ['Year', 'CRIME', 'ENT'],
+              [2012, 100, 100],
+              [2013, 200, 250],
+              [2014, 300, 175],
+              [2016, 200, 250],
+              [2017, 300, 175],
+          ]);
+          var options = {
+          title: 'Articles',
+          curveType: 'function', 
+          legend: {position: 'bottom'},
+          // margin-left: -100px,
+          // margin-right: -100px
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+      chart.draw(data, options);
+      }
+  </script>
+
+
 </head>
 
 <body class="">
@@ -236,7 +264,9 @@
             <div class="col-md-4">
               <div class="card card-chart">
                 <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
+                  <div style="margin-left: 10px; margin-right: 10px" class="ct-chart" id="curve_chart">
+                    <!-- <div class="ct=" id="curve_chart" ></div> -->
+                  </div>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">Daily Sales</h4>
